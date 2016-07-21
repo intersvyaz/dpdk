@@ -166,8 +166,8 @@ rte_table_hash_create_key16_lru(void *params,
 	f->seed = p->seed;
 
 	if (p->key_mask != NULL) {
-		f->key_mask[0] = ((uint64_t *)p->key_mask)[0];
-		f->key_mask[1] = ((uint64_t *)p->key_mask)[1];
+		f->key_mask[0] = ((const uint64_t *)p->key_mask)[0];
+		f->key_mask[1] = ((const uint64_t *)p->key_mask)[1];
 	} else {
 		f->key_mask[0] = 0xFFFFFFFFFFFFFFFFLLU;
 		f->key_mask[1] = 0xFFFFFFFFFFFFFFFFLLU;
@@ -394,8 +394,8 @@ rte_table_hash_create_key16_ext(void *params,
 		f->stack[i] = i;
 
 	if (p->key_mask != NULL) {
-		f->key_mask[0] = (((uint64_t *)p->key_mask)[0]);
-		f->key_mask[1] = (((uint64_t *)p->key_mask)[1]);
+		f->key_mask[0] = (((const uint64_t *)p->key_mask)[0]);
+		f->key_mask[1] = (((const uint64_t *)p->key_mask)[1]);
 	} else {
 		f->key_mask[0] = 0xFFFFFFFFFFFFFFFFLLU;
 		f->key_mask[1] = 0xFFFFFFFFFFFFFFFFLLU;

@@ -162,7 +162,7 @@ rte_table_hash_create_key8_lru(void *params, int socket_id, uint32_t entry_size)
 	f->seed = p->seed;
 
 	if (p->key_mask != NULL)
-		f->key_mask = ((uint64_t *)p->key_mask)[0];
+		f->key_mask = ((const uint64_t *)p->key_mask)[0];
 	else
 		f->key_mask = 0xFFFFFFFFFFFFFFFFLLU;
 
@@ -379,7 +379,7 @@ rte_table_hash_create_key8_ext(void *params, int socket_id, uint32_t entry_size)
 		&f->memory[(n_buckets + n_buckets_ext) * f->bucket_size];
 
 	if (p->key_mask != NULL)
-		f->key_mask = ((uint64_t *)p->key_mask)[0];
+		f->key_mask = ((const uint64_t *)p->key_mask)[0];
 	else
 		f->key_mask = 0xFFFFFFFFFFFFFFFFLLU;
 
