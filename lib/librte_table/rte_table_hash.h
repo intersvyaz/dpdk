@@ -198,7 +198,7 @@ struct rte_table_hash_key8_lru_params {
 	uint32_t key_offset;
 
 	/** Bit-mask to be AND-ed to the key on lookup */
-	uint8_t *key_mask;
+	const uint8_t *key_mask;
 };
 
 /** LRU hash table operations for pre-computed key signature */
@@ -231,7 +231,7 @@ struct rte_table_hash_key8_ext_params {
 	uint32_t key_offset;
 
 	/** Bit-mask to be AND-ed to the key on lookup */
-	uint8_t *key_mask;
+	const uint8_t *key_mask;
 };
 
 /** Extendible bucket hash table operations for pre-computed key signature */
@@ -265,7 +265,7 @@ struct rte_table_hash_key16_lru_params {
 	uint32_t key_offset;
 
 	/** Bit-mask to be AND-ed to the key on lookup */
-	uint8_t *key_mask;
+	const uint8_t *key_mask;
 };
 
 /** LRU hash table operations for pre-computed key signature */
@@ -299,7 +299,7 @@ struct rte_table_hash_key16_ext_params {
 	uint32_t key_offset;
 
 	/** Bit-mask to be AND-ed to the key on lookup */
-	uint8_t *key_mask;
+	const uint8_t *key_mask;
 };
 
 /** Extendible bucket operations for pre-computed key signature */
