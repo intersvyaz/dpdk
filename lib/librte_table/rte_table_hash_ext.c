@@ -444,7 +444,6 @@ static int rte_table_hash_ext_lookup_unoptimized(
 	uint64_t pkts_mask_out = 0;
 
 	__rte_unused uint32_t n_pkts_in = __builtin_popcountll(pkts_mask);
-	RTE_TABLE_HASH_EXT_STATS_PKTS_IN_ADD(t, n_pkts_in);
 
 	for ( ; pkts_mask; ) {
 		struct bucket *bkt0, *bkt;
@@ -974,6 +973,8 @@ static int rte_table_hash_ext_lookup(
 	lookup2_stage3(t, g, pkts, pkt30_index, pkt31_index, pkts_mask_out,
 		entries);
 
+	RTE_TABLE_HASH_EXT_STATS_PKTS_LOOKUP_MISS(t, n_pkts_in - __builtin_popcountll(pkts_mask_out));
+
 	/* Slow path */
 	pkts_mask_match_many &= ~pkts_mask_out;
 	if (pkts_mask_match_many) {
@@ -985,7 +986,6 @@ static int rte_table_hash_ext_lookup(
 	}
 
 	*lookup_hit_mask = pkts_mask_out;
-	RTE_TABLE_HASH_EXT_STATS_PKTS_LOOKUP_MISS(t, n_pkts_in - __builtin_popcountll(pkts_mask_out));
 	return status;
 }
 
@@ -1107,6 +1107,8 @@ static int rte_table_hash_ext_lookup_dosig(
 	lookup2_stage3(t, g, pkts, pkt30_index, pkt31_index, pkts_mask_out,
 		entries);
 
+	RTE_TABLE_HASH_EXT_STATS_PKTS_LOOKUP_MISS(t, n_pkts_in - __builtin_popcountll(pkts_mask_out));
+
 	/* Slow path */
 	pkts_mask_match_many &= ~pkts_mask_out;
 	if (pkts_mask_match_many) {
@@ -1118,7 +1120,6 @@ static int rte_table_hash_ext_lookup_dosig(
 	}
 
 	*lookup_hit_mask = pkts_mask_out;
-	RTE_TABLE_HASH_EXT_STATS_PKTS_LOOKUP_MISS(t, n_pkts_in - __builtin_popcountll(pkts_mask_out));
 	return status;
 }
 
