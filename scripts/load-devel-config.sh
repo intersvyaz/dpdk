@@ -1,4 +1,4 @@
-#! /bin/echo must be loaded with .
+#!/bin/echo must be loaded with .
 
 # Load DPDK devel config and allow override
 # from system file
